@@ -1,6 +1,8 @@
-<!-- robots.txt -->
 User-agent: *
 Allow: /
-Sitemap: https://your-domain.com/sitemap.xml
+Sitemap: https://technomads-v3.vercel.app/sitemap.xml
+
 Disallow: /admin/
 Disallow: /private/
+Disallow: /assets/
+Disallow: /images/

@@ -1,11 +1,59 @@
-<!-- sitemap.xml -->
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://your-domain.com/</loc><priority>1.0</priority></url>
-  <url><loc>https://your-domain.com/index.html</loc><priority>1.0</priority></url>
-  <url><loc>https://your-domain.com/services.html</loc><priority>0.9</priority></url>
-  <url><loc>https://your-domain.com/portfolio.html</loc><priority>0.9</priority></url>
-  <url><loc>https://your-domain.com/team.html</loc><priority>0.8</priority></url>
-  <url><loc>https://your-domain.com/contact.html</loc><priority>0.9</priority></url>
-  <url><loc>https://your-domain.com/entertainment/play.html</loc><priority>0.7</priority></url>
+  <!-- الصفحات الرئيسية -->
+  <url><loc>https://technomads-v3.vercel.app/</loc><lastmod>2026-01-01</lastmod><priority>1.00</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/index.html</loc><lastmod>2026-01-01</lastmod><priority>1.00</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/services.html</loc><lastmod>2026-01-01</lastmod><priority>0.90</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/portfolio.html</loc><lastmod>2026-01-01</lastmod><priority>0.90</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/team.html</loc><lastmod>2026-01-01</lastmod><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/contact.html</loc><lastmod>2026-01-01</lastmod><priority>0.90</priority></url>
+
+  <!-- صفحات الترفيه -->
+  <url><loc>https://technomads-v3.vercel.app/entertainment/play.html</loc><priority>0.70</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/entertainment/memory-game.html</loc><priority>0.70</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/entertainment/the-age.html</loc><priority>0.70</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/entertainment/code-lab.html</loc><priority>0.70</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/entertainment/color-generator.html</loc><priority>0.70</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/entertainment/image-editor.html</loc><priority>0.70</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/entertainment/quiz-game.html</loc><priority>0.70</priority></url>
+
+  <!-- ===== المشاريع - مواقع ويب ===== -->
+  <url><loc>https://technomads-v3.vercel.app/projects/ecommerce-website/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/pharmacy-website/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/booking-system/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/financial-accountant/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/health-system/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/Cinema/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/travel-agency/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/app-store/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/quiz-platform/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/wit/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/project-structure/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/Cleaning%20Services/</loc><priority>0.80</priority></url>
+
+  <!-- ===== المشاريع - التطبيقات ===== -->
+  <url><loc>https://technomads-v3.vercel.app/projects/delivery-app/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/educational-app/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/MedicalAnalysisApp/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/treemix_app/</loc><priority>0.80</priority></url>
+
+  <!-- ===== المشاريع - التصميم ===== -->
+  <url><loc>https://technomads-v3.vercel.app/projects/brand-identity/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/logo-design/</loc><priority>0.80</priority></url>
+
+  <!-- ===== المشاريع - الأدوات ===== -->
+  <url><loc>https://technomads-v3.vercel.app/projects/age-calculator/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/code-editor/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/color-generator/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/image-editor/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/fileuploader/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/localStorage/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/wifi-auto-connect/</loc><priority>0.80</priority></url>
+  <url><loc>https://technomads-v3.vercel.app/projects/wifi-extractor/</loc><priority>0.80</priority></url>
+
+  <!-- ===== المشاريع - الألعاب ===== -->
+  <url><loc>https://technomads-v3.vercel.app/projects/memory-game/</loc><priority>0.80</priority></url>
+
+  <!-- ===== المشاريع - التسويق ===== -->
+  <url><loc>https://technomads-v3.vercel.app/projects/marketing-campaign/</loc><priority>0.80</priority></url>
 </urlset>
