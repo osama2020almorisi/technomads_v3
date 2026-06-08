@@ -1,4 +1,3 @@
-// vercel.json
 {
   "version": 2,
   "name": "technomads",
@@ -9,16 +8,6 @@
     { "src": "images/**", "use": "@vercel/static" },
     { "src": "projects/**/*.html", "use": "@vercel/static" },
     { "src": "entertainment/**/*.html", "use": "@vercel/static" }
-  ],
-  "headers": [
-    {
-      "source": "/(.*).css",
-      "headers": [{ "key": "Content-Type", "value": "text/css; charset=utf-8" }]
-    },
-    {
-      "source": "/(.*).js",
-      "headers": [{ "key": "Content-Type", "value": "application/javascript; charset=utf-8" }]
-    }
   ],
   "trailingSlash": false
 }
